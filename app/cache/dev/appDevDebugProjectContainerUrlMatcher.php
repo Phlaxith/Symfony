@@ -106,18 +106,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         // homepage
-        if ('' === rtrim($pathinfo, '/')) {
-            if ('/' === substr($pathinfo, -1)) {
-                // no-op
-            } elseif (!in_array($this->context->getMethod(), array('HEAD', 'GET'))) {
-                goto not_homepage;
-            } else {
-                return $this->redirect($rawPathinfo.'/', 'homepage');
-            }
-
+        if ('/wxz' === $pathinfo) {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
-        not_homepage:
 
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
