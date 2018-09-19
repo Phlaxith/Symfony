@@ -48,7 +48,7 @@ class __TwigTemplate_acc11a215e10b5d4934f5bef0eda199862331b69505726ac646ace17f4b
         echo "
     <label for=\"username\">";
         // line 12
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("security.login.username", array(), "FOSUserBundle"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("login : ", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>
     <input type=\"text\" id=\"username\" name=\"_username\" value=\"";
         // line 13
@@ -57,19 +57,19 @@ class __TwigTemplate_acc11a215e10b5d4934f5bef0eda199862331b69505726ac646ace17f4b
 
     <label for=\"password\">";
         // line 15
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("security.login.password", array(), "FOSUserBundle"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Password", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>
     <input type=\"password\" id=\"password\" name=\"_password\" required=\"required\" autocomplete=\"current-password\" />
 
     <input type=\"checkbox\" id=\"remember_me\" name=\"_remember_me\" value=\"on\" />
     <label for=\"remember_me\">";
         // line 19
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("security.login.remember_me", array(), "FOSUserBundle"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Remenber me", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>
 
     <input type=\"submit\" id=\"_submit\" name=\"_submit\" value=\"";
         // line 21
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("security.login.submit", array(), "FOSUserBundle"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("Se connecter", array(), "FOSUserBundle"), "html", null, true);
         echo "\" />
 </form>
 ";
@@ -114,16 +114,16 @@ class __TwigTemplate_acc11a215e10b5d4934f5bef0eda199862331b69505726ac646ace17f4b
         <input type=\"hidden\" name=\"_csrf_token\" value=\"{{ csrf_token }}\" />
     {% endif %}
 
-    <label for=\"username\">{{ 'security.login.username'|trans }}</label>
+    <label for=\"username\">{{ 'login : '|trans }}</label>
     <input type=\"text\" id=\"username\" name=\"_username\" value=\"{{ last_username }}\" required=\"required\" autocomplete=\"username\" />
 
-    <label for=\"password\">{{ 'security.login.password'|trans }}</label>
+    <label for=\"password\">{{ 'Password'|trans }}</label>
     <input type=\"password\" id=\"password\" name=\"_password\" required=\"required\" autocomplete=\"current-password\" />
 
     <input type=\"checkbox\" id=\"remember_me\" name=\"_remember_me\" value=\"on\" />
-    <label for=\"remember_me\">{{ 'security.login.remember_me'|trans }}</label>
+    <label for=\"remember_me\">{{ 'Remenber me'|trans }}</label>
 
-    <input type=\"submit\" id=\"_submit\" name=\"_submit\" value=\"{{ 'security.login.submit'|trans }}\" />
+    <input type=\"submit\" id=\"_submit\" name=\"_submit\" value=\"{{ 'Se connecter'|trans }}\" />
 </form>
 ", "@FOSUser/Security/login_content.html.twig", "C:\\xampp\\htdocs\\Symfony\\my_project_name\\vendor\\friendsofsymfony\\user-bundle\\Resources\\views\\Security\\login_content.html.twig");
     }

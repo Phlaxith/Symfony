@@ -33,7 +33,7 @@ class Annonce
 
     /**
      * One Annonce has One Creator.
-     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="creator", referencedColumnName="id")
      */
     protected $creator;

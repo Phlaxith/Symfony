@@ -10,6 +10,7 @@ class __TwigTemplate_3063d743641cc0be1119cb6c2cc0ed4afc055c3db7b6276f9e2242c29fc
         $this->parent = false;
 
         $this->blocks = array(
+            'content' => array($this, 'block_content'),
             'fos_user_content' => array($this, 'block_fos_user_content'),
         );
     }
@@ -97,8 +98,8 @@ class __TwigTemplate_3063d743641cc0be1119cb6c2cc0ed4afc055c3db7b6276f9e2242c29fc
         <div>
             ";
         // line 29
-        $this->displayBlock('fos_user_content', $context, $blocks);
-        // line 31
+        $this->displayBlock('content', $context, $blocks);
+        // line 33
         echo "        </div>
     </body>
 </html>
@@ -109,13 +110,29 @@ class __TwigTemplate_3063d743641cc0be1119cb6c2cc0ed4afc055c3db7b6276f9e2242c29fc
     }
 
     // line 29
+    public function block_content($context, array $blocks = array())
+    {
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+
+        // line 30
+        echo "                ";
+        $this->displayBlock('fos_user_content', $context, $blocks);
+        // line 32
+        echo "        ";
+        
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
+
+    }
+
+    // line 30
     public function block_fos_user_content($context, array $blocks = array())
     {
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "fos_user_content"));
 
-        // line 30
-        echo "            ";
+        // line 31
+        echo "                ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -133,7 +150,7 @@ class __TwigTemplate_3063d743641cc0be1119cb6c2cc0ed4afc055c3db7b6276f9e2242c29fc
 
     public function getDebugInfo()
     {
-        return array (  118 => 30,  112 => 29,  102 => 31,  100 => 29,  96 => 27,  93 => 26,  87 => 25,  78 => 22,  73 => 21,  68 => 20,  63 => 19,  61 => 18,  57 => 16,  49 => 14,  43 => 11,  39 => 10,  34 => 9,  32 => 8,  23 => 1,);
+        return array (  135 => 31,  129 => 30,  122 => 32,  119 => 30,  113 => 29,  103 => 33,  101 => 29,  97 => 27,  94 => 26,  88 => 25,  79 => 22,  74 => 21,  69 => 20,  64 => 19,  62 => 18,  58 => 16,  50 => 14,  44 => 11,  40 => 10,  35 => 9,  33 => 8,  24 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -174,8 +191,10 @@ class __TwigTemplate_3063d743641cc0be1119cb6c2cc0ed4afc055c3db7b6276f9e2242c29fc
         {% endif %}
 
         <div>
-            {% block fos_user_content %}
-            {% endblock fos_user_content %}
+            {% block content %}
+                {% block fos_user_content %}
+                {% endblock fos_user_content %}
+        {% endblock %}
         </div>
     </body>
 </html>
