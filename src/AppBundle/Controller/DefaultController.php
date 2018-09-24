@@ -13,7 +13,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $user = $this->getUser();
+        $user = $this->getUser();     
         if(!empty($user)){
             if($user->hasRole("ROLE_ADMIN")){
                 // Redirection sur le back office
@@ -27,7 +27,7 @@ class DefaultController extends Controller
         return $this->render("default/index.html.twig");
         // return $this->redirectToRoute("annonce");
     }
-
+    
     /**
      * @Route("/back-office/", name="back_office")
      */

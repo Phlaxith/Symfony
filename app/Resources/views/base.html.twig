@@ -12,7 +12,6 @@
         <div id="Menu" class="container">
 
             <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #f56b2a;">
-                <img src="{{ asset('favicon.ico') }}" class="thumbnail" alt="">
                 <a class="navbar-brand">LEBONCOIN</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,7 +20,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item ">
-                            <a class="nav-link {% if app.request.get("_route") == "annonce" %}active{% endif %}" href="{{ path("homepage") }}">Accueil</a>
+                            <a class="nav-link {% if app.request.get("_route") == "homepage" %}active{% endif %}" href="{{ path("homepage") }}">Accueil</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link {% if app.request.get("_route") == "annonces" %}active{% endif %}" href="{{ path("annonce") }}">Annonces</a>
                         </li>
                         {% if app.user and app.user.hasRole("ROLE_ADMIN") %}
                             <li class="nav-item">
