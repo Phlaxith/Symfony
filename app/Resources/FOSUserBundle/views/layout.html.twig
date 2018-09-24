@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Connexion{% endblock %}
+{% block body %}
+    <div class="panel">
+        <p>Merci de bien vouloir saisir login / mot de passe</p>
+    </div>
+    {{ include('@FOSUser/Security/login_content.html.twig') }}
+{% endblock %}

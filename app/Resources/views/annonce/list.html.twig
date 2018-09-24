@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Bienvenue sur Leboncoin{% endblock %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <h1>Leboncoin</h1>
+            <div class="row">
+                {% for annonce in annonces %}
+                    <div class="col-md-12">
+                        <h2>{{ annonce.titre }}</h2>
+                        <p>{{ annonce.description }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
