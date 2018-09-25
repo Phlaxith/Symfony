@@ -5,11 +5,22 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-            <h1>Leboncoin</h1>
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>Leboncoin</h1>
+                </div>
+                {% if app.user %}
+                <div class=" float-md-right">
+                    <a class="btn btn-success" href="{{ path("add_annonce") }}">Créer une annonce</a>
+                </div>
+                {% endif %}
+            </div>
             <div class="row">
                 {% for annonce in annonces %}
                     <div class="col-md-12">
-                        <h2>{{ annonce.titre }}</h2>
+                        <a href="{{ path('details_add', {'id': annonce.id}) }}">
+                            <h2>{{ annonce.titre }}</h2>
+                        </a>
                         <p>{{ annonce.description }}</p>
                     </div>
                 {% endfor %}

@@ -6,9 +6,11 @@
     <div id="wrapper">
         <div id="container">
             <h1>Nouvelle annonce</h1>
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
+            <div class="row">
+                <div class="col-md-push-2 col-md-8 center">
+                    {{ form(form) }}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

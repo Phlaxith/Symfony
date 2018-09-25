@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Annonce
@@ -24,7 +25,7 @@ class Annonce
     /**
      * @var string
      *
-     * @ORM\Column(name="titre", type="string", length=255, unique=true)
+     * @ORM\Column(name="titre", type="string", length=255)
      */
     private $titre;
 
@@ -44,7 +45,7 @@ class Annonce
 
     /**
      * @ORM\ManyToOne(targetEntity="Commune", inversedBy="annonces")
-     * @ORM\JoinColumn(name="commune_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="commune_id", referencedColumnName="id", nullable=false)
      */
     private $commune;
 
@@ -58,7 +59,7 @@ class Annonce
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="annonces")
-     * @ORM\JoinColumn(name="creator_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="creator_id", referencedColumnName="id", nullable=false)
      */
     private $creator;
 
@@ -231,5 +232,6 @@ class Annonce
     {
         $this->creator = $creator;
     }
+
 }
 

@@ -1,8 +1,13 @@
 <?php
 
 namespace AppBundle\Controller;
+// namespace FOS\UserBundle\Doctrine;
+
+// use FOS\UserBundle\Model\UserManager;
 
 use AppBundle\Entity\Annonce;
+use AppBundle\Entity\User;
+use AppBundle\Form\AnnonceType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,21 +38,43 @@ class AnnonceController extends Controller
     /**
      * @Route("/annonces/add", name="add_annonce")
      */
-    public function createAddAction(Request $request){
+    public function createAddAction(Request $request){    
         $annonce = new Annonce();
+        // on prédéfinit des champs invisibles à l'utilisateur
         $annonce->setCreatedAt(new \DateTime('now'));
         $annonce->setActif(True);
-    
-        $form = $this->createFormBuilder($annonce)
-            ->add('titre' ,TextType::class)
-            ->add('description', TextareaType::class)
-            ->add('created_at', DateType::class)
-            ->add('commune', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Créer une annonce'))
-            ->getForm();
+        $annonce->setCreator($this->getUser());
         
-            return $this->render('annonce/new_add.html.twig', [
-                'form' => $form->createView(),
-            ]);
+        $form = $this->createForm(AnnonceType::class, $annonce);
+        
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()){
+            // on créé l'objet en BDD
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($annonce);
+            $entityManager->flush();
+
+            // on redirige vers les annonces
+            return $this->redirect($this->generateUrl('annonce'));
+        }
+            
+        return $this->render('annonce/new_add.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/annonces/{id}", requirements={"id"="\d+"}, name="details_add")
+     */
+    public function getAddById($id){
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository(Annonce::class);
+
+        $add = $repository->findBy([
+            "id" => $id,
+        ]);
+        return $this->render('annonce/details.html.twig', [
+            'add' => $add,
+        ]);
     }
 }

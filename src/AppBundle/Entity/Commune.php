@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Commune
@@ -37,7 +38,7 @@ class Commune
 
     /**
      * @ORM\ManyToOne(targetEntity="Departement", inversedBy="communes")
-     * @ORM\JoinColumn(name="departement_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="departement_id", referencedColumnName="id", nullable=false)
      */
     private $departement;
 
@@ -131,6 +132,11 @@ class Commune
     public function getDepartement()
     {
         return $this->departement;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getCommune().'('.$this->getDepartement()->getNumero().')';
     }
 }
 
